@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{titulo}}</h1>
+        <div v-for="(url,index) in urlImg">
+            {{index}}<img v-bind:src="url.lang"  v-on:click="test(index)">
+            <p v-show="url.description.status">
+                {{url.description.name}}
+            </p>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+        var app = new  Vue({
+           
+            el:"#app",
+            data:{ 
+                 
+                titulo : "Aprendendo VUE",
+               
+                urlImg: [
+                    {
+                        lang : "https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png",
+                        description : {
+                            name :  "Descrição do vue ",
+                            status : false,
+                        }
+                    },
+                    {
+                        lang : "https://emendes.com/wp-content/uploads/2019/09/Angular_full_color_logo.svg_.png",
+                        description : {
+                            name :  "Descrição do angular ",
+                            status : false,
+                        }
+                    },
+                    {
+                        lang : "https://cdn.auth0.com/blog/react-js/react.png",
+                        description : {
+                            name :  "Descrição do react ",
+                            status : false,
+                        }
+                    }
+
+                ],
+                test : (index)=>{
+                   // alert("sadjb")
+                   this.app.urlImg[index].description.status = true;
+                },
+
+               
+            },
+           
+
+        });
+
+    </script>
+
+</body>
+</html>
